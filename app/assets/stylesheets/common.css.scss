@@ -1,0 +1,17 @@
+table {
+	margin: 5px;
+	border: 1px dotted gray;
+	border-collapse:collapse;
+	
+	td,th {
+		border: 1px dotted gray;
+		padding: 3px;
+	}
+}
+
+section.wiki {
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 5px 0px 5px 0px;
+	padding: 10px;
+}

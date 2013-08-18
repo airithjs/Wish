@@ -1,0 +1,77 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery.ui.all
+ *= require_tree .
+ */
+
+body{
+	margin: auto;
+	padding: 0px;
+	font-size: small;
+	width: 800px;
+}
+
+header {
+	margin: 0px;
+	padding: 4px;	
+	background: lightgray;
+}
+
+section {
+	margin: auto;
+	margin-top: 5px;
+	border-radius: 5px;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+pre {
+	border: 1px dotted gray;
+	padding: 5px;
+	width: 80%;
+}
+
+
+.CodeRay {
+  background-color: #232323;
+  border: 1px solid black;
+  font-family: 'Courier New', 'Terminal', monospace;
+  color: #E6E0DB;
+  padding: 3px 5px;
+  overflow: auto;
+  font-size: 12px;
+  margin: 12px 0;
+  width: 80%;
+}
+.CodeRay pre {
+  margin: 0px;
+  padding: 0px;
+}
+
+.CodeRay .an { color:#E7BE69 }                      /* html attribute */
+.CodeRay .comment  { color:#BC9358; font-style: italic; } /* comment */
+.CodeRay .ch { color:#509E4F }                      /* escaped character */
+.CodeRay .class { color:#FFF }                         /* class */
+.CodeRay .co { color:#FFF }                         /* constant */
+.CodeRay .fl { color:#A4C260 }                      /* float */
+.CodeRay .fu { color:#FFC56D }                      /* function */
+.CodeRay .gv { color:#D0CFFE }                      /* global variable */
+.CodeRay .i  { color:#A4C260 }                      /* integer */
+.CodeRay .inline { background:#151515 }                 /* inline code */
+.CodeRay .iv { color:#D0CFFE }                      /* instance variable */
+.CodeRay .doctype { color:#E7BE69 }                      /* doctype */
+.CodeRay .keyword  { color:#CB7832 }                      /* keyword */
+.CodeRay .regex { color:#A4C260 }                      /* regex */
+.CodeRay .string  { color:#A4C260 }                      /* string */
+.CodeRay .symbol { color:#6C9CBD }                      /* symbol */
+.CodeRay .tag { color:#E7BE69 }                      /* html tag */
+.CodeRay .boolean { color:#6C9CBD }                      /* boolean */

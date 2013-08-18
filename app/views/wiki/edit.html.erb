@@ -1,0 +1,40 @@
+
+<%= form_for :info do |i| %>
+<%= hidden_field_tag :content_id, @info.id %>
+<%= i.hidden_field :last_rev %>
+
+<div>
+title : <%= i.text_field :title %><br/>
+parent : <%= i.text_field :parent %><br/>
+tag : <%= i.text_field :tag %><br/>
+category : <%= i.hidden_field :category %><br/>
+type : <%= i.select :content_type, options_for_select(ContentInfo.content_type_list, @info.content_type) %><br/>
+</div>
+
+<br/>
+
+<div id='div_form_task'>
+<table>
+<tr>
+	<th>TERM</th>
+	<td>
+		<%= text_field_tag "task[s_date]" , Date.today, {class: "datepicker"} %> ~ 
+		<%= text_field_tag "task[e_date]" , Date.today, {class: "datepicker"} %>
+	</td>
+</tr>
+<tr>
+	<th colspan="2">ToDo / Check Point</th>
+</tr>
+	<% for idx in ((@task.total_todo + 1) .. (@task.total_todo + 10)) %>
+		<tr><td colspan="2"><%= idx %>. <%= text_field_tag "todo[#{idx}]", "", :size => 100 %></td></tr>
+	<% end %>
+</table> 
+</div>
+
+<div>
+<%= text_area_tag :text, @wiki.text , :size =>"150x20" %><br/>
+</div>
+
+<%= i.submit "save" %>
+
+<% end %>

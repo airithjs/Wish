@@ -1,0 +1,39 @@
+<section class='div_info'>
+<h3><%= @info.content_type %> <%= @info.id %>. <%= @info.title %></h3>
+<p style='text-align:right'> Tag : <%= @info.tag %></p>
+</section>
+
+<% if info.content_type == "task" %>
+<section class='div_task'>
+<table>
+<tr>
+	<th>term</th>
+	<td><progress value="<%= info.task.term %>" max="100"></progress></td>
+	<td><%= info.task.s_date.to_date %> ~ <%= info.task.e_date.to_date %></td>
+</tr>
+<tr>
+	<th>completeness</th>
+	<td><progress value="<%= info.task.completeness %>" max="100"></progress></td>
+	<td><%= info.task.finish_todo %> / <%= info.task.total_todo %></td>
+</tr>
+</table>
+<br/>
+To Do.
+<table>
+	<% for t in info.to_do %>
+	<tr>
+		<td><%= t.idx %>.</td>
+		<td width='500px'><%= t.title %></td>
+		<td><%= t.state_str %></td>
+		<td>
+			<input type='button' class='button_update_todo' content='<%= t.content_id %>' 
+			idx='<%= t.idx %>' value='update' text='<%= t.title %>'>
+		</td>
+	</tr>
+	<% end %>
+</table>
+<div id='dialog_todo_update'>
+test
+</div>
+</section>
+<% end %>

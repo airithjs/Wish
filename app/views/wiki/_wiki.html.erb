@@ -1,0 +1,11 @@
+<section class='wiki'>
+	<div style='border-bottom:1px solid gray;'><%= convert(wiki.text) %></div>
+	<div style='text-align:right'>
+		< rev.<%= wiki.rev %> ><br/>
+		<%= wiki.editor %><br/>
+		<%= link_to "edit", {action: "edit", content_id: wiki.content_id } %> | 
+		<%= link_to "make sub", { action: "edit", "info[parent]" => wiki.content_id } %> | 
+		<%= link_to "history", { action: "history", content_id: wiki.content_id } %> | 
+		<%= link_to "list", {action: "index"} %>
+	</div>
+</section>

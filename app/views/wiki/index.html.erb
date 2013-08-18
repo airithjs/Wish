@@ -1,0 +1,19 @@
+<br/>
+
+<div>
+<table>
+<% for i in @list %>
+<tr>
+	<td><%= i.id %>.</td>
+	<td width='500px'><%= link_to i.title, { action: 'view', content_id: i.id } %></td>
+	<td><%= i.content_type %></td>
+</tr>
+<% end %>
+</table>
+</div>
+
+<br/>
+
+<div>
+<%= link_to "new", controller: '/wiki' ,action: 'edit' %>
+</div>

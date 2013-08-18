@@ -1,0 +1,5 @@
+<%= render partial: "info", locals: { info: @info } %>
+
+<% for i in @history %>
+	<%= render partial: "wiki", locals: { wiki: i } %>
+<% end %>

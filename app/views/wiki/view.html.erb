@@ -1,0 +1,19 @@
+
+<%= render partial: "info", locals: { info: @info } %>
+<%= render partial: "wiki", locals: { wiki: @wiki } %>
+
+<% for s in @info.sub %>
+<section class='sub_content'>
+	<div>
+		<%= s.content_type %>.<%= s.id %> |
+		<%= s.title %>
+	</div>
+
+	<div>
+		<% unless s.task.nil? %>
+			<%= s.task.s_date.to_date %> ~ <%= s.task.e_date.to_date %>
+		<% end %>
+		<progress value="<%= s.task.completeness %>" max="100"></progress>
+	</div>
+</section>
+<% end %>
