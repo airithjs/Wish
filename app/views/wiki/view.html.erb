@@ -6,14 +6,14 @@
 <section class='sub_content'>
 	<div>
 		<%= s.content_type %>.<%= s.id %> |
-		<%= s.title %>
+		<%= link_to s.title , {action: "view", content_id: s.id} %>
 	</div>
 
 	<div>
 		<% unless s.task.nil? %>
 			<%= s.task.s_date.to_date %> ~ <%= s.task.e_date.to_date %>
+			<progress value="<%= s.task.completeness %>" max="100"></progress>
 		<% end %>
-		<progress value="<%= s.task.completeness %>" max="100"></progress>
 	</div>
 </section>
 <% end %>

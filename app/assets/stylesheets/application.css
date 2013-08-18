@@ -24,6 +24,8 @@ header {
 	margin: 0px;
 	padding: 4px;	
 	background: lightgray;
+	display:-webkit-box;
+	-webkit-box-pack:justify
 }
 
 section {

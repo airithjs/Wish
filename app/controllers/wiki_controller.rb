@@ -27,6 +27,7 @@ class WikiController < ApplicationController
 				end
 				task.save
 			end
+			Log.add(@info.id,@info.last_rev,params[:comment], "tester")
 			redirect_to action: 'index'
 		end
 	end
@@ -39,6 +40,8 @@ class WikiController < ApplicationController
 		t = Task.where(content_id: content_id).first
 		t.finish_todo += (state != "new") ? 1 : -1
 		t.save
+
+		Log.add(content_id,0,"ch","tester")
 
 		render :json => result
 	end
@@ -53,5 +56,11 @@ class WikiController < ApplicationController
 		content_id = params[:content_id]
 		@info = ContentInfo.find(content_id)
 		@history = Wiki.where(content_id: content_id).order("rev DESC")
+	end
+
+	def log
+		content_id = params[:content_id]
+		@info = ContentInfo.find(content_id)
+		@log = Log.where(content_id: content_id).order("rev DESC")
 	end
 end

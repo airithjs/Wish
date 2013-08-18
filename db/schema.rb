@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815104637) do
+ActiveRecord::Schema.define(version: 20130818063959) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -45,12 +45,22 @@ ActiveRecord::Schema.define(version: 20130815104637) do
     t.datetime "updated_at"
   end
 
+  create_table "logs", force: true do |t|
+    t.integer  "content_id"
+    t.integer  "rev"
+    t.string   "comment"
+    t.string   "editor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tasks", force: true do |t|
     t.integer  "content_id"
     t.datetime "s_date"
     t.datetime "e_date"
     t.integer  "total_todo",  default: 0
     t.integer  "finish_todo", default: 0
+    t.integer  "state",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

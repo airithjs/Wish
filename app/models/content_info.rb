@@ -20,4 +20,34 @@ class ContentInfo < ActiveRecord::Base
 		end
 		ci
 	end
+
+	def total_task
+		sum = 0
+		unless( task.nil? )
+			sum = task.total_todo
+			sub.each do |i|
+				unless( i.task.nil? )
+					sum += i.task.total_todo
+				end
+			end
+		end
+		sum
+	end
+
+	def finish_task
+		sum = 0
+		unless( task.nil? )
+			sum = task.finish_todo
+			sub.each do |i|
+				unless( i.task.nil? )
+					sum += i.task.finish_todo
+				end
+			end
+		end
+		sum
+	end
+
+	def completeness
+		(100 * finish_task / total_task).to_i
+	end
 end

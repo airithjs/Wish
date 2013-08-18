@@ -1,0 +1,9 @@
+
+<%= render partial: "info", locals: { info: @info } %>
+
+
+<section>
+<% for i in @log %>
+	<%= i.updated_at %>| <%= i.comment %><br/>
+<% end %>
+</section>

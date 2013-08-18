@@ -2,10 +2,11 @@
 <%= form_for :info do |i| %>
 <%= hidden_field_tag :content_id, @info.id %>
 <%= i.hidden_field :last_rev %>
+<%= i.hidden_field :parent %>
+
 
 <div>
-title : <%= i.text_field :title %><br/>
-parent : <%= i.text_field :parent %><br/>
+title : <%= i.text_field :title , :size => 50 %><br/>
 tag : <%= i.text_field :tag %><br/>
 category : <%= i.hidden_field :category %><br/>
 type : <%= i.select :content_type, options_for_select(ContentInfo.content_type_list, @info.content_type) %><br/>
@@ -32,6 +33,7 @@ type : <%= i.select :content_type, options_for_select(ContentInfo.content_type_l
 </div>
 
 <div>
+comment : <%= text_field_tag :comment, "", :size => 100 %><br/>
 <%= text_area_tag :text, @wiki.text , :size =>"150x20" %><br/>
 </div>
 
