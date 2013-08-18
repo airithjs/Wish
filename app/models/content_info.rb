@@ -9,8 +9,8 @@ class ContentInfo < ActiveRecord::Base
 		CONTENT_TYPE
 	end
 
-	def self.create(params)
-		ci = ContentInfo.new
+	def self.get_or_new(content_id, params)
+		ci = ContentInfo.where(id: content_id).first || ContentInfo.new
 		unless( params.nil? )
 			ci.title = params[:title] || ""
 			ci.tag = params[:tag] || ""

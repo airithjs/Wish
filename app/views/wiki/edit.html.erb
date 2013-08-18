@@ -1,3 +1,9 @@
+<% unless @parent.nil? %>
+<h3> base content info </h3>
+<%= render partial: "info", locals: { info: @parent } %>
+<h3> edit sub content </h3>
+<% end %>
+
 
 <%= form_for :info do |i| %>
 <%= hidden_field_tag :content_id, @info.id %>
@@ -6,8 +12,8 @@
 
 
 <div>
-title : <%= i.text_field :title , :size => 50 %><br/>
-tag : <%= i.text_field :tag %><br/>
+title : <%= i.text_field :title , :size => 100 %><br/>
+tag : <%= i.text_field :tag , :size => 100 %><br/>
 category : <%= i.hidden_field :category %><br/>
 type : <%= i.select :content_type, options_for_select(ContentInfo.content_type_list, @info.content_type) %><br/>
 </div>
@@ -34,7 +40,7 @@ type : <%= i.select :content_type, options_for_select(ContentInfo.content_type_l
 
 <div>
 comment : <%= text_field_tag :comment, "", :size => 100 %><br/>
-<%= text_area_tag :text, @wiki.text , :size =>"150x20" %><br/>
+<%= text_area_tag :text, @wiki.text , :size =>"110x20" %><br/>
 </div>
 
 <%= i.submit "save" %>

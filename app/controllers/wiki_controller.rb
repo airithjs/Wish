@@ -1,4 +1,6 @@
 class WikiController < ApplicationController
+	before_filter :authenticate_user! , :except => [:index, :view]
+
 	def index
 		@list = ContentInfo.all
 	end
@@ -6,17 +8,14 @@ class WikiController < ApplicationController
 	def edit
 		content_id = params[:content_id]
 		@wiki = Wiki.get_last(content_id)
-		if( content_id.nil? || content_id.empty? )
-			@info = ContentInfo.create(params[:info])  
-		else
-			@info = ContentInfo.find(content_id)
-		end
+		@info = ContentInfo.get_or_new(content_id, params[:info])
 		@task = Task.get_or_new(content_id)
+		@parent = ( params[:info].nil? ||params[:info][:parent].nil? ) ? nil : ContentInfo.find(params[:info][:parent].to_i)
 
 		if( params[:commit] == "save")
 			@info.last_rev += 1
 			@info.save!
-			Wiki.update(@info.id, "tester", params[:text])
+			Wiki.update(@info.id, current_user.username, params[:text])
 			if( @info.content_type == "task" )
 				task = Task.update(@info.id,params[:task])
 				params[:todo].each do |k,v| 
@@ -27,7 +26,7 @@ class WikiController < ApplicationController
 				end
 				task.save
 			end
-			Log.add(@info.id,@info.last_rev,params[:comment], "tester")
+			Log.add(@info.id,@info.last_rev,params[:comment], current_user.username)
 			redirect_to action: 'index'
 		end
 	end
@@ -41,7 +40,7 @@ class WikiController < ApplicationController
 		t.finish_todo += (state != "new") ? 1 : -1
 		t.save
 
-		Log.add(content_id,0,"ch","tester")
+		Log.add(content_id,0,"ch",current_user.username)
 
 		render :json => result
 	end

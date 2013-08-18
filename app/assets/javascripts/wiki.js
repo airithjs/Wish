@@ -5,7 +5,18 @@ function update_todo(params){
 	$.post("/wiki/update_todo", params);
 }
 
+function check_content_type(){
+	type = $('#info_content_type option:selected').text();
+	if( type == "task"){
+		$('#div_form_task').show();
+	}else{
+		$('#div_form_task').hide();
+	}
+}
+
 var wiki_js = function(){
+	check_content_type();
+
 	$('.button_update_todo').click(function(){
 		content_id = $(this).attr("content");
 		idx = $(this).attr("idx");
@@ -42,14 +53,7 @@ var wiki_js = function(){
 		});
 	});
 
-	$('#info_content_type').change(function(){
-		type = $('#info_content_type option:selected').text();
-		if( type == "task"){
-			$('#div_form_task').show();
-		}else{
-			$('#div_form_task').hide();
-		}
-	});
+	$('#info_content_type').change(check_content_type);
 }
 
 $(document).ready(wiki_js);
