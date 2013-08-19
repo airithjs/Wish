@@ -31,6 +31,18 @@ class WikiController < ApplicationController
 		end
 	end
 
+	def images
+		@images = RawFile.where(upload_content_type: "image/jpeg").limit(10)
+		render layout: nil
+	end
+
+	def upload
+		params[:uploader] = current_user.username
+		rf = RawFile.new(upload_params)
+		rf.save
+		redirect_to :back
+	end
+
 	def update_todo
 		content_id = params[:content_id]
 		idx = params[:idx]

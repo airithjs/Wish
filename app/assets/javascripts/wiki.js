@@ -54,6 +54,30 @@ var wiki_js = function(){
 	});
 
 	$('#info_content_type').change(check_content_type);
+
+	$('.button_file_upload').click(function(){
+		$('#dialog_file_upload').dialog({
+			title: "file upload",
+			buttons: [
+				{text:"cancel", click: function(){$(this).dialog("close")}},
+				{text:"upload", click: function(){
+					$(this).dialog("close");
+					$('#file_upload').submit();
+				}}
+			]
+		});
+	});
+
+	$('#button_find_image').click(function(){
+		$('#div_select_image').load("/wiki/images");
+		$('#div_select_image').dialog({
+			title : "find image",
+			width: 800, height: 600,
+			buttons: [
+				{text:"select", click: function(){$(this).dialog("close")}}
+			]
+		});
+	});
 }
 
 $(document).ready(wiki_js);

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130818063959) do
+ActiveRecord::Schema.define(version: 20130819163419) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 20130818063959) do
     t.string   "editor"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "raw_files", force: true do |t|
+    t.string   "comment"
+    t.integer  "content_id"
+    t.string   "uploader"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
   end
 
   create_table "tasks", force: true do |t|

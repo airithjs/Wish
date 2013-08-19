@@ -10,6 +10,7 @@ Wish::Application.routes.draw do
   get ':controller(/:action)'
   post 'wiki/edit'
   post 'wiki/update_todo'
+  post 'wiki/upload'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

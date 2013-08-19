@@ -1,0 +1,6 @@
+
+<%= form_for :raw_file, :url => { controller: 'wiki', action: 'upload' }, 
+	:html => { :multipart => true , :id => "file_upload"} do |form| %>
+	comment : <%= form.text_field :comment %><br/>
+  <%= form.file_field :upload %>
+<% end %>

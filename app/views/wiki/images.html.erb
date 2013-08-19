@@ -1,0 +1,7 @@
+
+<% for i in @images %>
+<div style='float:left;width:350px'>
+<%= image_tag i.upload.url(:original), {class: "img_check", width: 350} %><br/>
+<%= i.comment %>
+</div>
+<% end %>

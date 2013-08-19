@@ -49,3 +49,4 @@ gem 'devise'
 gem 'coderay'
 gem 'redcarpet'
 gem 'rename'
+gem "paperclip"

@@ -39,10 +39,16 @@ type : <%= i.select :content_type, options_for_select(ContentInfo.content_type_l
 </div>
 
 <div>
-comment : <%= text_field_tag :comment, "", :size => 100 %><br/>
+comment : <%= text_field_tag :comment, "", :size => 100 %>
+<input type='button' id='button_find_image' value='find image'>
+<br/>
 <%= text_area_tag :text, @wiki.text , :size =>"110x20" %><br/>
 </div>
 
 <%= i.submit "save" %>
 
 <% end %>
+
+<div id='div_select_image'>
+test
+</div>

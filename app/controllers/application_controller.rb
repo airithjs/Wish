@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def upload_params
+  	params.require(:raw_file).permit(:comment, :upload)
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:userid, :password, :remember_me) }
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :userid, :password, :password_confirmation) }

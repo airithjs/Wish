@@ -62,4 +62,7 @@ module ApplicationHelper
   	@markdown.render(content)
 	end
 
+	def image_url(raw_file)
+		image_tag i.upload.url(:original)
+	end
 end
