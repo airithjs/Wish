@@ -10,7 +10,7 @@ class WikiController < ApplicationController
 		@wiki = Wiki.get_last(content_id)
 		@info = ContentInfo.get_or_new(content_id, params[:info])
 		@task = Task.get_or_new(content_id)
-		@parent = ( params[:info].nil? ||params[:info][:parent].nil? ) ? nil : ContentInfo.find(params[:info][:parent].to_i)
+		@parent = ( params[:info].nil? || params[:info][:parent].nil? || params[:info][:parent].to_i == 0) ? nil : ContentInfo.find(params[:info][:parent].to_i)
 
 		if( params[:commit] == "save")
 			@info.last_rev += 1
@@ -32,7 +32,7 @@ class WikiController < ApplicationController
 	end
 
 	def images
-		@images = RawFile.where(upload_content_type: "image/jpeg").limit(10)
+		@images = RawFile.where("upload_content_type like ?", "image%").limit(10)
 		render layout: nil
 	end
 
@@ -61,6 +61,13 @@ class WikiController < ApplicationController
 		content_id = params[:content_id]
 		@info = ContentInfo.find(content_id)
 		@wiki = Wiki.get_last(content_id)
+	end
+
+	def fragment
+    @content_id = params[:content_id]
+    @info = ContentInfo.find(@content_id)
+    @wiki = Wiki.get_last(@content_id)
+    render layout: nil
 	end
 
 	def history

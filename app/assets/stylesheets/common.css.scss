@@ -19,3 +19,17 @@ section.wiki {
 #dialog_file_upload {
 	display:none;
 }
+
+.div_fragment {
+    margin: 1px 5px 1px 10px;
+    padding: 0px;
+
+    .div_fragment_top {
+      border-bottom: 1px dashed black;
+      text-decoration: bold;
+      margin: 5px;
+    }
+    .div_fragment_body {
+      margin: 5px;
+    }
+}

@@ -1,0 +1,11 @@
+<%= javascript_include_tag :wiki %>
+
+
+<% if @wiki.nil? %>
+   <%= @content_id %> 항목이 없습니다.
+<% else %>
+<div class='div_fragment_top'><%= @info.title %></div>
+<div class='div_fragment_body'>
+   <%= convert(@wiki.text) %>
+</div>
+<% end %>

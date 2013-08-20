@@ -17,6 +17,12 @@ function check_content_type(){
 var wiki_js = function(){
 	check_content_type();
 
+	$('.unload').each(function(){
+      content_id = $(this).attr("content_id");
+      $(this).load("/wiki/fragment", {content_id: content_id});
+      $(this).removeClass('unload');
+  });
+
 	$('.button_update_todo').click(function(){
 		content_id = $(this).attr("content");
 		idx = $(this).attr("idx");
