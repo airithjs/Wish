@@ -5,6 +5,7 @@ class CreateWikis < ActiveRecord::Migration
     	t.integer :rev, :default => 0
     	t.text :text
     	t.string :editor
+      t.string :comment, :default => ""
     	t.boolean :is_last, :default => true
       t.timestamps
     end

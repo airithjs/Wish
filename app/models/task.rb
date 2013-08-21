@@ -1,14 +1,19 @@
 class Task < ActiveRecord::Base
 	belongs_to :content_info
-	def self.update(content_id, params)
+	def self.update(content_id, params = nil)
 		task = Task.where(content_id: content_id).first
 		if( task.nil? )
 			task = Task.new
 			task.content_id = content_id
 		end
-		task.s_date = params[:s_date]
-		task.e_date = params[:e_date]
-		task
+		task.total_todo = ToDo.where(content_id: content_id).size
+		task.finish_todo = ToDo.where("content_id = ? AND state > 0", content_id).size
+		unless(params.nil?)
+			task.s_date = params[:s_date]
+			task.e_date = params[:e_date]
+		end
+		Log.add(content_id,"Task with #{task.finish_todo}/#{task.total_todo} todo")
+		task.save
 	end
 
 	def self.get_or_new(content_id)

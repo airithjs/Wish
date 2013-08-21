@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819163419) do
+ActiveRecord::Schema.define(version: 20130821160943) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -47,16 +47,21 @@ ActiveRecord::Schema.define(version: 20130819163419) do
 
   create_table "logs", force: true do |t|
     t.integer  "content_id"
-    t.integer  "rev"
     t.string   "comment"
     t.string   "editor"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "projects", force: true do |t|
+    t.string   "manager"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "raw_files", force: true do |t|
     t.string   "comment"
-    t.integer  "content_id"
+    t.integer  "content_id",          default: 0
     t.string   "uploader"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -70,6 +75,7 @@ ActiveRecord::Schema.define(version: 20130819163419) do
     t.integer  "content_id"
     t.datetime "s_date"
     t.datetime "e_date"
+    t.string   "persion"
     t.integer  "total_todo",  default: 0
     t.integer  "finish_todo", default: 0
     t.integer  "state",       default: 0
@@ -112,6 +118,7 @@ ActiveRecord::Schema.define(version: 20130819163419) do
     t.integer  "rev",        default: 0
     t.text     "text"
     t.string   "editor"
+    t.string   "comment",    default: ""
     t.boolean  "is_last",    default: true
     t.datetime "created_at"
     t.datetime "updated_at"

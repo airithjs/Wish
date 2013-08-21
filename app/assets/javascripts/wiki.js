@@ -60,8 +60,12 @@ var wiki_js = function(){
 	});
 
 	$('#info_content_type').change(check_content_type);
+	$('#file_upload').ajaxForm(function(){
+		alert("complete");
+	});
 
 	$('.button_file_upload').click(function(){
+		$('#raw_file_content_id').val( $('#content_id').val());
 		$('#dialog_file_upload').dialog({
 			title: "file upload",
 			buttons: [
@@ -69,6 +73,11 @@ var wiki_js = function(){
 				{text:"upload", click: function(){
 					$(this).dialog("close");
 					$('#file_upload').submit();
+					$('#raw_file_comment').val("");
+					$('#raw_file_upload').val(null);
+					$('#file_upload').ajaxForm(function(){
+						alert("complete");
+					});
 				}}
 			]
 		});

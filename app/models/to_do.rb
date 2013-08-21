@@ -8,6 +8,8 @@ class ToDo < ActiveRecord::Base
 		td.title = title
 		td.state = 0
 		td.save
+
+		Log.add(content_id,"ToDo NEW : #{title}")
 		return true
 	end
 
@@ -16,6 +18,7 @@ class ToDo < ActiveRecord::Base
 		puts "STATE" + state
 		return false if( td.nil? )
 		td.state = STATE.index(state.to_sym) || state
+		Log.add(content_id,"ToDo #{state} : #{td.title}")
 		td.save
 		return true
 	end

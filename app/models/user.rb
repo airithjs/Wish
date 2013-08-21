@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
   validates :userid, presence: true
   validates :username, presence: true
   validates_uniqueness_of :userid
+
+  def self.current
+    Thread.current[:user]
+  end
+  
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
 end

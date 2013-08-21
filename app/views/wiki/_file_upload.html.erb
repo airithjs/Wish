@@ -3,4 +3,5 @@
 	:html => { :multipart => true , :id => "file_upload"} do |form| %>
 	comment : <%= form.text_field :comment %><br/>
   <%= form.file_field :upload %>
+  <%= form.hidden_field :content_id %>
 <% end %>
