@@ -10,7 +10,7 @@
 
 <header>
 	<div id="div_menu_nav">
-	<%= link_to "main", {action: "index"} %> | 
+	<%= link_to "main", {controller: '/wiki', action: "index"} %> | 
 	</div>
 	<div id="div_user_nav">
 	  <% if user_signed_in? %>

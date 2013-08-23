@@ -1,0 +1,10 @@
+<section>
+	<div style='text-align:right'>
+		<%= link_to "view", { action: "view", content_id: content_id } %> | 
+		<%= link_to "edit", { action: "edit", content_id: content_id } %> | 
+		<%= link_to "make sub", { action: "edit", "info[parent]" => content_id } %> | 
+		<%= link_to "history", { action: "history", content_id: content_id } %> | 
+		<%= link_to "log", { action: "log", content_id: content_id } %> | 
+		<%= link_to "list", {action: "index"} %>
+	</div>
+</section>

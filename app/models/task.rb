@@ -8,10 +8,13 @@ class Task < ActiveRecord::Base
 		end
 		task.total_todo = ToDo.where(content_id: content_id).size
 		task.finish_todo = ToDo.where("content_id = ? AND state > 0", content_id).size
+
 		unless(params.nil?)
 			task.s_date = params[:s_date]
 			task.e_date = params[:e_date]
+			task.person = params[:person]
 		end
+		
 		Log.add(content_id,"Task with #{task.finish_todo}/#{task.total_todo} todo")
 		task.save
 	end

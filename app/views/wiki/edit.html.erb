@@ -15,13 +15,24 @@
 title : <%= i.text_field :title , :size => 100 %><br/>
 tag : <%= i.text_field :tag , :size => 100 %><br/>
 category : <%= i.hidden_field :category %><br/>
-type : <%= i.select :content_type, options_for_select(ContentInfo.content_type_list, @info.content_type) %><br/>
+type : <%= i.select :content_type, options_for_select(ContentInfo.content_type_list, @info.content_type) , {}, {:disabled => (!@info.id.nil?)} %><br/>
 </div>
 
 <br/>
 
+<div id='div_form_project'>
+<table>
+<tr>
+	<th>manager</th><td><%= select_tag "project[manager]", options_for_select(User.list) %></td>
+</tr>
+</table>
+</div>
+
 <div id='div_form_task'>
 <table>
+<tr>
+	<th>person</th><td><%= select_tag "task[person]", options_for_select(User.list) %></td>
+</tr>
 <tr>
 	<th>TERM</th>
 	<td>
@@ -46,7 +57,7 @@ comment : <%= text_field_tag :comment, "", :size => 100 %>
 <%= text_area_tag :text, @wiki.text , :size =>"110x20" %><br/>
 </div>
 
-<%= i.submit "save" %>
+<%= i.submit "save" , { id: "edit_submit" } %>
 
 <% end %>
 

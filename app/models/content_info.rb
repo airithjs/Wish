@@ -1,4 +1,5 @@
 class ContentInfo < ActiveRecord::Base
+	has_one :project, :foreign_key => "content_id"
 	has_one :task, :foreign_key => "content_id"
 	has_many :to_do, :foreign_key => "content_id"
 	has_many :sub, :class_name => "ContentInfo", :foreign_key => "parent"

@@ -5,7 +5,7 @@ class Log < ActiveRecord::Base
 	end
 
 	def self.delete_nil_id
-		Log.where(content_id: nil).remove_all
+		Log.where(content_id: nil).delete_all
 	end
 
 	def self.update_nil_id(id)

@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration
     	t.integer :content_id
     	t.datetime :s_date
     	t.datetime :e_date
-      t.string :persion
+      t.string :person
     	t.integer :total_todo, :default => 0
     	t.integer :finish_todo, :default => 0
       t.integer :state, :default => 0

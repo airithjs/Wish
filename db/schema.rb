@@ -54,7 +54,10 @@ ActiveRecord::Schema.define(version: 20130821160943) do
   end
 
   create_table "projects", force: true do |t|
+    t.integer  "content_id"
     t.string   "manager"
+    t.integer  "total_task",  default: 0
+    t.integer  "finish_task", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,7 +78,7 @@ ActiveRecord::Schema.define(version: 20130821160943) do
     t.integer  "content_id"
     t.datetime "s_date"
     t.datetime "e_date"
-    t.string   "persion"
+    t.string   "person"
     t.integer  "total_todo",  default: 0
     t.integer  "finish_todo", default: 0
     t.integer  "state",       default: 0

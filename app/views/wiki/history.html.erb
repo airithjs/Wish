@@ -3,3 +3,5 @@
 <% for i in @history %>
 	<%= render partial: "wiki", locals: { wiki: i } %>
 <% end %>
+
+<%= render partial: "footer", locals: { content_id: @info.id } %>

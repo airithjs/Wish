@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def self.current=(user)
     Thread.current[:user] = user
   end
+
+  def self.list
+    User.all.map{|u| u.userid }
+  end
 end

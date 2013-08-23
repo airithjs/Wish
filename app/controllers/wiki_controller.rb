@@ -1,5 +1,6 @@
 class WikiController < ApplicationController
-	before_filter :authenticate_user! && :set_current_user , :except => [:index, :view]
+	before_filter :authenticate_user! , :except => [:index, :view]
+	before_filter :set_current_user
 
 	def index
 		@list = ContentInfo.all
@@ -25,6 +26,8 @@ class WikiController < ApplicationController
 					end
 				end
 				Task.update(@info.id,params[:task])
+			elsif( @info.content_type == "project" )
+				Project.update(@info.id,params[:project])
 			end
 			Log.update_nil_id(@info.id)
 			RawFile.update_nil_id(@info.id)
@@ -45,7 +48,6 @@ class WikiController < ApplicationController
 		state = params[:state]
 		ToDo.change_state(content_id, idx, state)
 		Task.update(content_id)
-
 		render :json => result
 	end
 

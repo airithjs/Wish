@@ -4,6 +4,10 @@
 
 <section>
 <% for i in @log %>
-	<%= i.updated_at %>| <%= i.comment %><br/>
+	<%= i.updated_at.strftime("%Y-%m-%d %H:%M:%S") %> | 
+	<%= User.where(i.editor).first.username %> | 
+	<%= i.comment %><br/>
 <% end %>
 </section>
+
+<%= render partial: "footer", locals: { content_id: @info.id } %>

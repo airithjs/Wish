@@ -7,6 +7,9 @@
 <section class='div_task'>
 <table>
 <tr>
+	<th>person</th><td><%= info.task.person %></td>
+</tr>
+<tr>
 	<th>term</th>
 	<td><progress value="<%= info.task.term %>" max="100"></progress></td>
 	<td><%= info.task.s_date.to_date %> ~ <%= info.task.e_date.to_date %></td>
@@ -35,5 +38,13 @@ To Do.
 <div id='dialog_todo_update'>
 test
 </div>
+</section>
+<% elsif info.content_type == "project" %>
+<section class='div_project'>
+<table>
+<tr>
+	<th>manager</th><td><%= info.project.manager %></td>
+</tr>
+</table>
 </section>
 <% end %>

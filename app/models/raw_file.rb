@@ -12,7 +12,7 @@ class RawFile < ActiveRecord::Base
   end
 
   def self.delete_nil_id
-  	RawFile.where(content_id: nil).remove_all
+  	RawFile.where(content_id: nil).delete_all
   end
 
   def self.update_nil_id(id)
