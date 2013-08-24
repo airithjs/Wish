@@ -1,0 +1,6 @@
+
+<% for i in @attention %>
+<% unless i.content_info.nil? %>
+<%= i.attention_type %>. <%= i.content_info.title %><br/>
+<% end %>
+<% end %>

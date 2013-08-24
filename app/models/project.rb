@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
 		end
 		unless( params.nil?)
 			project.manager = params[:manager]
+			AttentionContent.manager(content_id,project.manager)
 		end
 		project.save
 	end

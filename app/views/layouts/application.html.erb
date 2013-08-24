@@ -11,6 +11,7 @@
 <header>
 	<div id="div_menu_nav">
 	<%= link_to "main", {controller: '/wiki', action: "index"} %> | 
+	<%= link_to "my", {controller: '/wiki', action: "my"} %>
 	</div>
 	<div id="div_user_nav">
 	  <% if user_signed_in? %>

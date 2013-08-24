@@ -29,13 +29,16 @@ class WikiController < ApplicationController
 			elsif( @info.content_type == "project" )
 				Project.update(@info.id,params[:project])
 			end
+			AttentionContent.reader(@info.id, current_user.userid)
 			Log.update_nil_id(@info.id)
 			RawFile.update_nil_id(@info.id)
 			redirect_to action: 'view', content_id: @info.id
 		end
 	end
 
-
+	def my
+		@attention = AttentionContent.where(userid: current_user.userid)
+	end
 
 	def upload
 		RawFile.add(upload_params)

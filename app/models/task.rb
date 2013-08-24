@@ -13,6 +13,7 @@ class Task < ActiveRecord::Base
 			task.s_date = params[:s_date]
 			task.e_date = params[:e_date]
 			task.person = params[:person]
+			AttentionContent.person(content_id,task.person)
 		end
 		
 		Log.add(content_id,"Task with #{task.finish_todo}/#{task.total_todo} todo")
