@@ -32,19 +32,20 @@ type : <%= i.select :content_type, options_for_select(ContentInfo.content_type_l
 <table>
 <tr>
 	<th>person</th><td><%= select_tag "task[person]", options_for_select(User.list) %></td>
+	<th>state</th><td><%= select_tag "task[state]", options_for_select(Task.state_list) %></td>
 </tr>
 <tr>
 	<th>TERM</th>
-	<td>
+	<td colspan="3">
 		<%= text_field_tag "task[s_date]" , Date.today, {class: "datepicker"} %> ~ 
 		<%= text_field_tag "task[e_date]" , Date.today, {class: "datepicker"} %>
 	</td>
 </tr>
 <tr>
-	<th colspan="2">ToDo / Check Point</th>
+	<th colspan="4">ToDo / Check Point</th>
 </tr>
 	<% for idx in ((@task.total_todo + 1) .. (@task.total_todo + 10)) %>
-		<tr><td colspan="2"><%= idx %>. <%= text_field_tag "todo[#{idx}]", "", :size => 100 %></td></tr>
+		<tr><td colspan="4"><%= idx %>. <%= text_field_tag "todo[#{idx}]", "", :size => 100 %></td></tr>
 	<% end %>
 </table> 
 </div>

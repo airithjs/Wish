@@ -1,6 +1,11 @@
 
-<% for i in @attention %>
+<% for i in @project %>
 <% unless i.content_info.nil? %>
-<%= i.attention_type %>. <%= i.content_info.title %><br/>
+<%= render partial: "sub_content_info", locals: {info: i.content_info , type: "main_list"} %>
+	<% if i.content_info.content_type == "project" %>
+		<% for s in i.content_info.sub %>
+			<%= render partial: "sub_content_info", locals: {info: s , type: "sub_list"} %>
+		<% end %>
+	<% end %>
 <% end %>
 <% end %>

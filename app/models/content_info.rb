@@ -17,7 +17,7 @@ class ContentInfo < ActiveRecord::Base
 			ci.title = params[:title] || ""
 			ci.tag = params[:tag] || ""
 			ci.category = params[:category] || ""
-			ci.content_type = params[:content_type] || :wiki
+			ci.content_type = params[:content_type] if( params.has_key?(:content_type))
 			ci.parent = params[:parent] || nil
 		end
 		ci

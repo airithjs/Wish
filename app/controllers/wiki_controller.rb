@@ -37,7 +37,7 @@ class WikiController < ApplicationController
 	end
 
 	def my
-		@attention = AttentionContent.where(userid: current_user.userid)
+		@project = AttentionContent.where(userid: current_user.userid)
 	end
 
 	def upload

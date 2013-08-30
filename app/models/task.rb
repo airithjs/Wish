@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
 	belongs_to :content_info
+	STATE=[:new, :begin, :complete, :finish]
 	def self.update(content_id, params = nil)
 		task = Task.where(content_id: content_id).first
 		if( task.nil? )
@@ -32,5 +33,9 @@ class Task < ActiveRecord::Base
 	def term
 		total = (e_date.to_date - s_date.to_date).to_i
 		return (total == 0) ? 100 : (100 * (Date.today - s_date.to_date)/total).to_i
+	end
+
+	def self.state_list
+		STATE
 	end
 end

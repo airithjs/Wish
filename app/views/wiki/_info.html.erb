@@ -7,7 +7,7 @@
 <section class='div_task'>
 <table>
 <tr>
-	<th>person</th><td><%= info.task.person %></td>
+	<th>person</th><td colspan="2"><%= info.task.person %></td>
 </tr>
 <tr>
 	<th>term</th>
@@ -17,7 +17,9 @@
 <tr>
 	<th>completeness</th>
 	<td><progress value="<%= info.completeness %>" max="100"></progress></td>
-	<td><%= info.finish_task %> / <%= info.total_task %></td>
+	<td>
+		<%= info.finish_task %> / <%= info.total_task %>
+	</td>
 </tr>
 </table>
 <br/>

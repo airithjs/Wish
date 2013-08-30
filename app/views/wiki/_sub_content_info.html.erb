@@ -1,0 +1,13 @@
+<section class='<%= type %>'>
+<div>
+	<%= info.content_type %>.<%= info.id %> |
+	<%= link_to info.title , {action: "view", content_id: info.id} %>
+</div>
+
+<div>
+	<% unless info.task.nil? %>
+		<%= info.task.s_date.to_date %> ~ <%= info.task.e_date.to_date %>
+		<progress value="<%= info.task.completeness %>" max="100"></progress>
+	<% end %>
+</div>
+</section>

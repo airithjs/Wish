@@ -36,6 +36,20 @@ section {
 	padding: 5px;
 }
 
+section.main_list {
+	display:-webkit-box;
+	-webkit-box-pack:justify;
+}
+
+section.sub_list {
+	margin: 3px 3px 3px 30px;
+	border:none;
+	border-radius: 0px;
+	border-left: 3px solid gray;
+	display:-webkit-box;
+	-webkit-box-pack:justify;
+}
+
 pre {
 	border: 1px dotted gray;
 	padding: 5px;
